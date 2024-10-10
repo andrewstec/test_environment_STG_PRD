@@ -1,0 +1,36 @@
+name: Rollback Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      rollback_version:
+        description: "Version or commit SHA to rollback to"
+        required: true
+      environment:
+        description: "Environment to deploy to (staging or production)"
+        required: true
+        default: "staging"
+        type: choice
+        options:
+          - staging
+          - production
+
+jobs:
+  rollback-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Checkout rollback version
+        run: |
+          if [[ "${{ github.event.inputs.rollback_version }}" == "latest" ]]; then
+            echo "Rolling back to the latest stable release"
+          else
+            echo "Rolling back to version ${{ github.event.inputs.rollback_version }}"
+            git checkout ${{ github.event.inputs.rollback_version }}
+          fi
+
+      - name: Rolling back...
+        run: echo "Rolling back now... place API checks and conditions here for robustness"
