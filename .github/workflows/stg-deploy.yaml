@@ -1,9 +1,7 @@
 name: Deploy to Staging
 
 on:
-  push:
-    branches:
-      - develop-v1
+  workflow_dispatch: 
 
 jobs:
   deploy-staging:
