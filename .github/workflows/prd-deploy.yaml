@@ -1,0 +1,18 @@
+name: Deploy to Production
+
+on:
+  workflow_dispatch: 
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment: PRD
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to Production
+        run: |
+          echo "Deploying to PRD... ONLY IF STG deployment done."
+
