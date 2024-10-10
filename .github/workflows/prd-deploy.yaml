@@ -16,3 +16,12 @@ jobs:
         run: |
           echo "Deploying to PRD... ONLY IF STG deployment done."
 
+      - name: Install maven repo and authorize
+        run: |
+          echo "Installing Java, mvn, and configuring step... "
+          echo "MY_MVN_INSTALL" > maven.install.mock
+
+      - name: Viewing mvn install
+        run: |
+          cat maven.install.mock
+
