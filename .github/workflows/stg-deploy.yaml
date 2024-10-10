@@ -18,3 +18,12 @@ jobs:
         run: |
           echo "Ensuring STG deployment requirement met..."
 
+      - name: Install maven repo and authorize
+        run: |
+          echo "Installing Java, mvn, and configuring step... "
+          echo "MY_MVN_INSTALL" > maven.install.mock
+
+      - name: Viewing mvn install
+        run: |
+          cat maven.install.mock
+
