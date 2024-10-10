@@ -6,7 +6,7 @@ on:
 jobs:
   deploy-production:
     runs-on: ubuntu-latest
-    environment: PRD
+    environment: production
 
     steps:
       - name: Checkout code
